@@ -1,0 +1,29 @@
+<h2>products List</h2>
+<hr />
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let prodcuts of product">
+    <!-- <app-product-card [product]="product"></app-product-card> -->
+    <div class="card h-100">
+        <img [src]="prodcuts.thumbnail" class="card-img-top" [alt]="prodcuts.title" />
+        <div class="card-body">
+          <p class="text-success">{{prodcuts.stock | sale}}</p>
+          <h5 class="card-title">{{prodcuts.title | uppercase}}</h5>
+          <p class="card-text">
+             {{prodcuts.description}}
+          </p>
+          <p class="card-text">
+            Price : {{prodcuts.price | currency}} 
+         </p>
+         <button class="btn btn-primary" (click)="redirectToDetails(prodcuts.id)">Details</button>
+        <br> <br><button class="btn btn-success " (click)="redirectocard(prodcuts.id)">Add to card</button>
+
+        </div>
+        <div class="card-footer">
+          <small class="text-body-secondary">Released: {{prodcuts.createdAt | date : 'mediumDate'}}</small>
+        </div>
+      </div>
+      
+  </div>
+</div>
+

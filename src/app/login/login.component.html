@@ -1,0 +1,75 @@
+
+<h3 style="text-align: center;padding: 30px;">login | Template Driven Form</h3>
+<hr />
+
+<form #gameForm="ngForm" (ngSubmit)="submitAddGameForm(gameForm)" 
+style="border: 2px solid; text-align: center;padding: 30px;" action="../product-list/product-list.component.html">
+  
+
+  <div class="mb-3">
+    <label for="game_description_control" class="form-label"
+      >Email</label
+    >
+    <input
+      type="email"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+
+      class="form-control"
+      id="email"
+      aria-describedby="email"
+      rows="5"
+      name="email"
+      [(ngModel)]="product.email"
+      required
+      
+      #email="ngModel"
+    />
+    <div
+      *ngIf="email.touched && email.invalid"
+      id="game_description_help"
+      class="text-danger form-text"
+    >
+      <small *ngIf="email.errors?.['required']">
+        this field is required
+      </small>
+    
+    <small *ngIf="email.errors?.['pattern']">
+      Please enter a valid email format.
+    </small>
+      
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      aria-describedby="game_price_help"
+      name="gamePrice"
+      [(ngModel)]="product.password"
+      required
+      #password="ngModel"
+    />
+    <div
+      *ngIf="password.touched && password.invalid"
+      id="game_price_help"
+      class="text-danger form-text"
+    >
+      <small *ngIf="password.errors?.['required']">
+        this field is required
+      </small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="gameForm.invalid">
+    login
+  </button>
+  <p>Dont have an account?<a href="register">Register</a></p>
+
+</form>
+
+<!-- Template Driven -->
+<!-- Import FormsModule => AppModule -->
+<!-- Component HTML => <form #formRefrence="ngForm" (ngSubmit)="function(formRefrence)"> -->
+<!-- Component HTML => <Input name="fieldName" ngModel #fieldName="ngModel"> -->
+<!-- Component HTML => {fieldName.errors?.['required']} -->
